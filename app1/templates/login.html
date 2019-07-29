@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "css/final1.css" %}">
+<script src="{% static "js/rc.js" %}"></script>
+<script src="{% static "js/rc1.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/rc3.js" %}"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <style>
+   
+  </style>
+</head>
+<body style="background-image:url(/static/images/rc29.jpg);overflow:hidden">
+  
+<nav class="navbar navbar-expand-lg nav-expand-sm n navbar-dark fixed-top" style="height: 7vh;background-color: rgba(0,0,0,0.6);">
+    <img src="{% static "images/rc.png" %}" style="height: 7vh;width:9vh;">
+    <ul class="nav navbar-nav" style="width:100%;display: flex;justify-content:end;align-items: center">
+  
+     
+                <li>
+                    <img src="{% static "images/pisb1.png" %}" style="height: 5vh;width: 15vh;">
+                </li>
+  </nav>
+    <div class="container-fluid" style="height:86vh;display:flex;justify-content:center;align-items:center">
+        <div class="row" style="height:56vh;">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4 pl-5">
+                    <div class="p2 from" style="height:60vh;">
+                            <h3>LOGIN</h3>
+                            <form method="post" action="/app1/login/">
+                              {% csrf_token %}
+                              <div class="col mt-3 pt-3">
+                                <input class="w100" type="text" placeholder="Username" name="username" required autocomplete=off onclick="this.placeholder=''" onblur="this.placeholder='Username'" />
+                              </div>
+                              <div class="col mt-3 " >
+                                <input  class="w100" type="password" placeholder="Password" name="password" required autocomplete=off onclick="this.placeholder=''" onblur="this.placeholder='Password'" />
+                              </div>
+                              <div class="col mt-3 ">
+                                <input class="w100" type="password" placeholder="Admin Password"  name="ad_pass" required autocomplete=off onclick="this.placeholder=''" onblur="this.placeholder='Admin Password'" />
+                              </div>
+                              <div class="col mt-3 ">
+                                <input class="w100" type="number" placeholder="TIME" required name="add_time"  autocomplete=off onclick="this.placeholder=''" onblur="this.placeholder='TIME'" />
+                              </div>
+                              <button type="submit" class="form-btn sx log-in" style="width:100%;">Submit</button>
+                            </form>
+                    </div>
+            </div>
+            <div class="col" style="height:5vh;"></div>
+        </div>
+        <!--<nav class="navbar" style="height:7vh;"></nav>-->
+        <nav class="navbar navbar-expand-lg nav-expand-sm navbar-dark n fixed-bottom" style="height: 7vh;display: flex;justify-content: center;align-items: center;background-color: rgba(0,0,0,0.6)">
+          <b class="text-white">&copy IEEE COMPUTER SOCIETY</b>
+        </nav>
+
+</body>
+</html>

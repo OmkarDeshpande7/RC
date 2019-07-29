@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<html>
+
+
+
+
+
+
+	<p class="error">{{error}}</p>
+
+
+
+<head>
+
+</head>
+<h1>Register Here:</h1>
+<body>
+
+
+
+<form method="post" id="newForm" > {% csrf_token %}
+	<label for="username">Username:</label>
+
+<input type="text" name="username" value="" id="username"><br><br>
+	<p id="found" >Sorry, username is already taken.</p>
+	<p>{{error1}}</p>
+	<label for="password">password:</label>
+<input type="password" name="password" value="" id="password" required><br><br>
+
+
+		<label for="name_1">name 1:</label>
+<input type="text" name="name_1" value="" id="name_1"><br><br>
+		<label for="name_2">name 2:</label>
+<input type="text" name="name_2" value="" id="name_2"><br><br>
+	<label for="email_1">email1:</label>
+<input type="email" name="email_1" value="" id="email_1"><br><br>
+	<label for="email_2">email2:</label>
+<input type="email" name="email_2" value="" id="email_2"><br><br>
+	<label for="num_1">phone number 1:</label>
+<input type="tel" name="num_1" value="" id="num_1" pattern="^[7-9][0-9]{9}$" title="Your phone number should be of 10 digits and start from 9 or 8 or 7" required><br><br>
+	<label for="num_2">phone number 2:</label>
+<input type="tel" name="num_2"pattern="^[7-9][0-9]{9}$" title="Your phone number should be of 10 digits and start from 9 or 8 or 7 value=" id="num_2"><br><br>
+	<input type="radio" value="1" name="level">junior</input><br><br>
+	<input type="radio" value="2" name="level" checked="checked">senior<br><br>
+
+<label for="ad_pass" required>admin password:</label><br>
+	<input type="password" name="ad_pass" value="" id="ad_pass"><br>
+
+	<input type="submit"  class="btn btn-success" ></input>
+
+
+</form>
+</body>
+<script type="text/javascript" srd="{% static 'admin/js/vendor/jquery.min.js' %}"></script>
+<script type="text/javascript" srd="{% static 'dajax/jquery.dajax.core.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+{% block javascript %}
+  <script>
+  $("document").ready(function () {
+  	document.getElementById("found").style.visibility = "hidden";
+    $("#username").keyup(function () {
+      var username = $(this).val();
+
+      $.ajax({
+
+        url: '/app1/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            document.getElementById("found").style.visibility = "visible";
+          }
+        }
+      });
+	document.getElementById("found").style.visibility = "hidden";
+    });
+
+    });
+  </script>
+{% endblock %}
+
+
+</html>
+
+
+ 
+{% endblock %}
+

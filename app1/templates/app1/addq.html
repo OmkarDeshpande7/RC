@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+<form action = "" method="post">
+   <!-- {% csrf_token %} -->
+   <h1>Enter details of every question</h1>
+<label for="Que">QUESTION:</label>
+<input id="Que"type="text" name="Que" value="">
+    <br>
+<label for="Ans">ANSWER:</label>
+<input id="Ans" type="text" name="Ans" value="">
+    <br>
+    <label for="opt1">A:</label>
+<input id="opt1" type="text" name="opt1" value="">
+    <br>
+    <label for="opt2">B:</label>
+<input id="opt2" type="text" name="opt2" value="">
+    <br>
+    <label for="opt3">C:</label>
+<input id="opt3" type="text" name="opt3" value="">
+    <br>
+    <label for="opt4">D:</label>
+<input id="opt4" type="text" name="opt4" value="">
+    <br>
+    {% csrf_token %}
+  <!--  {{forms.as_p}} -->
+  <label for="another">Do you want to add another question?:</label>
+  <input id="choice" name="choice" type=radio value="Yes">Yes
+  <input id="choice" name="choice" type=radio value="No">No
+<input type="submit" value="submit">
+    <br>
+</form>
+
+{% endblock %}

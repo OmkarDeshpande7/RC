@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% block body %}
+
+<h1> The details are: </h1>   <!--This line should be outside fror loop-->
+<form action="/app1/anscheck/" method="post">
+{% csrf_token %}
+		<p> Score : {{ u.score }}</p>
+		<p>Time: {{t}}</p>
+		<p> Question: {{ v.question }}</p>
+		<br>	<input type="number" name="try1" value="" id="try1"> 
+		<br>	<input type="number" name="try2" value="" id="try2"> 
+		<input type="submit" name="submit">
+</style>
+
+{% if w.attempt_count == 2 %}
+<br>Marking Scheme: +4 , -0
+{% elif w.attempt_count == 1 %}
+<br>Marking Scheme: +2 , -1
+{% endif %}
+</head>
+<body>
+{% endblock %}

@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+{% load staticfiles %}
+<head>
+    <title>QUESTION PAGE</title>
+    <link rel="stylesheet" href="{% static "css/style1.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+     <link rel="stylesheet" href="{% static "css/t1.css" %}">
+    <script src="{% static "js/rc.js" %}"></script>
+    <script src="{% static "js/rc1.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/rc3.js" %}"></script>
+
+    <script type="text/javascript" src="{% static "js/TimeCircles.js" %}"></script>
+    <link href="/static/css/icons.css"  rel="stylesheet">
+    <link href="/static/css/TimeCircles.css"  rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/animate.css" >
+     <script type="text/javascript" >
+       function preventBack(){
+            window.history.forward();
+
+        }
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null};
+        window.onload = function(){
+        document.onkeydown = function (e) {  
+            return (e.which || e.keyCode) != 82;  
+        };
+        }
+    </script>
+</head>
+<style>
+    .fade {
+        transition-duration: 0s;
+    }
+</style>
+
+<body style="background-image: url(/static/images/rc29.jpg)";overflow:hidden onkeydown="return (event.keyCode != 116)">
+    <form method="POST" action="/app1/anscheck/">
+    {% csrf_token %}
+        <nav class="navbar navbar-expand-lg nav-expand-sm n navbar-dark fixed-top" style="height: 7vh;">
+            <img src="{% static "images/rc.png" %}" style="height: 7vh;width:9vh;">
+            <ul class="nav navbar-nav" style="width:100%;display: flex;justify-content:end;align-items: center">
+
+                <li class="mr-5">
+                    <button class="btn logout" type="button" data-toggle="modal" data-target="#logout" style="color:black;width:16vh">Logout</button>
+                </li>
+                <li>
+                    <img src="{% static "images/pisb1.png" %}" style="height: 5vh;width: 15vh;">
+                </li>
+        </nav>
+        <section class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-8 c">
+                    <div class="col-lg-11 d">
+                        <div class="row">
+                            <div class="col-lg-12" style="    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%),
+                            radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%)#989898;
+                                    background-color:rgba(171, 234, 236, 0.9);
+ background-blend-mode: multiply,multiply;border-bottom-left-radius: 50px;border-bottom-right-radius: 50px;border:none;height:4vh;"></div>
+                        </div>
+                        <textarea class="col-lg-12   textarea" disabled style="background:transparent;height:45vh;border: none;margin-top: 3vh;font-weight:400;font-size: 1.2rem">
+{{v.question}}
+                    </textarea>
+                        <div class="row">
+                            <div class="col-lg-12" style="    background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%),
+                            radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%)#989898;
+                                    background-color:rgba(171, 234, 236, 0.9);
+
+
+ background-blend-mode: multiply,multiply;border-top-left-radius: 50px;border-top-right-radius: 50px;border:none;height:4vh;"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-8 e">
+                        <div class="row f ml-1">
+                            <input class="g ml-4" type="text" name="try1" id="ans1" pattern="\d*" maxlength="18" title="only numbers are allowed" placeholder="Attempt &#10102;" onclick="this.placeholder=''" onblur="this.placeholder='Attempt &#10102;'" autocomplete=off>
+                            <button class="ml-4 bt" type="submit" id="err_found" style=" background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%),
+                            radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%)#989898;
+                                    background-color:rgba(171, 234, 236, 0.9);width:16vh" onclick="store()">
+                                <span>
+                                    <b>Submit</b>
+                                </span>
+
+                            </button>
+                            <input class="g ml-4" type="text" pattern="\d*" name="try2" id="ans2" title="only numbers are allowed" maxlength="18"  placeholder="Attempt &#10103;" onclick="this.placeholder=''" onblur="this.placeholder='Attempt &#10103;'" autocomplete=off>
+                        </div>
+                    </div>
+                </div>
+                 </form>
+                <div class="col-lg-4 col-sm-5 t">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-10 z example mt-5" data-timer={{t}}>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 y">
+                                <div class="row">
+                                    <font style="margin-top:3.6vh;margin-left: 3vh ; ">Score</font>
+                                    <div class="col-lg-3 col-sm-3 ml-5 k">
+                                         {{ u.score }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 u">
+                                <button class="btn b" type="button" data-toggle="modal" data-target="#hints">
+                                    <span><i class="material-icons">turned_in</i></br>
+                                        <font class="ml-1">Hints</font>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="col-lg-12 no">
+                                <font style="margin-left:40px;">Marking</font>
+                                <br>
+                                <font style="margin-left:40px;">Scheme</font>
+                                <div class="col-lg-10 i mt-4">
+                                    <div class="row">
+                                        <div class="col-lg-6 o">
+                                            {{pmark}}
+                                        </div>
+                                        <div class="col-lg-6 ok">
+                                            {{nmark}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 m">
+                                <div class="row">
+                                    <font style="margin-top:3.6vh;margin-left: 2vh;">Attempts</font>
+                                    <div class="col-lg-3 col-sm-3 ml-3 k">
+                                    
+                                        {{w.attempt_count}}
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="col-lg-12 up">
+                                <button class="btn b" type="button" data-toggle="modal" data-target="#instructions">
+                                    <span><i class="material-icons">info</i></br>
+                                        <font class="ml-1">Instructions</font>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </section>
+
+        <nav class="navbar navbar-expand-lg nav-expand-sm navbar-dark n" style="height: 7vh;display: flex;justify-content: center;align-items: center;">
+            <b class="text-white">&copy IEEE COMPUTER SOCIETY</b>
+        </nav>
+        <div class="modal fade" id="hints" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-lg" style="width:150% !important;margin-top: 0vh;">
+<div class="modal-content" style="background-color: rgba(0,0,0);font-weight:200;">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <font style="color: white">Hints</font>
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" style="color:white;outline: none;">&times;</button>
+                    </div>
+                    <div class="modal-body" style="font-weight:bold;">
+  <p style="font-weight:100;">1)PERFECT NUMBER is a positive integer that is equal to the sum of its proper divisors.The smallest perfect number is 6,which is the sum of 1,2 and 3.
+<br>2)A number n is called deficient if the sum of its proper divisors is less than n and it is called abundant if this sum exceeds n.
+<br>3)FIBONACCI NUMBERS is a series of numbers in which each number (Fibonacci Number) is the sum of the two preceding numbers.The Simplest Form is the series 0 , 1 , 1 , 2 , 3 , 5 , 8 , ....
+</br>
+5)PASCAL'S Triangle is a triangle which is denoted as follows:</p>
+ <p style="text-align:center;color:white">  1 </p>
+<p style="text-align:center;color:white">   1       1 </p>
+<p style="text-align:center;color:white"> 1     2      1 </p>
+<p style="text-align:center;color:white"> 1      3     3     1 </p>
+<p style="font-weight:100;">6)A PALINDROMIC NUMBER  or NUMERAL PALINDROME is a number that remains the same when its digits are reverse.Like 16461, for example, it is "symmetrical".
+</br>
+7)AMICABLE NUMBER:A pair of numbers,each of which is the sum of the factors of the other. (e.g. 220 & 284.)
+</br>8)Armstrong number:A n number n is called armstrong number if the sum of the cube of its individual digits is equal to the number itself.eg:153 :1^3+5^3+3^3=153
+</br>9)A Harshad number is a number that is divisible by the sum of its own digits.For example, 1729 is a Harshad number because 1 + 7 + 2 + 9 = 19 and 1729 = 19 × 91
+</br>
+10)A number is called curious if it is equal to the sum of factorials of its digits.For example,145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.Find the sum of all curious numbers.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn s" data-dismiss="modal" style"color:black">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="instructions" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background-color: rgba(0,0,0);width: 150%;font-weight: 100;margin-left: -13vh;">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <font style="color: white">Instructions</font>
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" style="color:white;outline: none;">&times;</button>
+                    </div>
+                    <div class="modal-body">
+          <p style="color: lavender; margin-left:0;">1.The competition is of 28 minutes.</p>
+          <p style="color: lavender">2.The question put in front of you has only ONE INTEGER answer.</p>
+          <p style="color: lavender">3.You will only proceed if you attempt the question.</p>
+          <p style="color: lavender">4.You will have 2 attempts to answer the question.</p>
+          <p style="color: lavender">5.The attempts will carry marks given in the marking scheme ie, the first attempt will have a marking scheme of +4,0.And the second attempt has a marking scheme of +2,-1.</p>
+          <p style="color: lavender">6.You can log out of the competition any time you want through the LOGOUT button.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn s" data-dismiss="modal">Dismiss</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="logout">
+            <div class="modal-dialog">
+<div class="modal-content" style="background-color: rgba(0,0,0);color:white;font-weight:bold">
+                    <div class="modal-header">
+                        <h4 class="modal-title">LOGOUT?</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to submit?
+                    </div>
+                    <div class="modal-footer">
+                    <form action="/app1/score/" method="POST">{% csrf_token %}
+                        <button type="button" class="btn" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger s" href="{% static "#" %}">Logout</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        $(".example").TimeCircles({
+            time: {
+                Days: {
+                    show: false
+                },
+                Hours: {
+                    show: false
+                }
+            }
+        });
+        $(".example").TimeCircles({
+            fg_width: 0.0001
+        });
+        $(".example").TimeCircles({
+            bg_width: 0.5
+        });
+        $(".example").TimeCircles({
+            time: {
+                Minutes: {
+color: "#53bed1"
+                },
+                Seconds: {
+                    color: "#C0C8CF"
+                }
+            }
+        });
+        $(".example").TimeCircles({
+            refresh_interval: 0.5
+        });
+
+        function testAnim(x) {
+            $('.modal .modal-dialog').attr('class', 'modal-dialog  ' + x + '  animated');
+        };
+        $('#hints').on('show.bs.modal', function (e) {
+            var anim = zoomIn;
+            testAnim(anim);
+        })
+        $('#hints').on('hide.bs.modal', function (e) {
+            var anim = zoomOut;
+            testAnim(anim);
+        })
+    </script>
+        <script type="text/javascript" srd="{% static 'admin/js/vendor/jquery.min.js' %}"></script>
+<script type="text/javascript" srd="{% static 'dajax/jquery.dajax.core.js' %}"></script>
+<script src="{% static './jquery.min.js' %}"></script>
+<script type="text/javascript">
+
+var x={{w.attempt_count}};
+if (x==0){
+    var store = sessionStorage.getItem("store");
+    document.getElementById("ans1").placeholder=store;
+    document.getElementById("ans1").style.backgroundColor="rgba(240,99,99,0.9)";
+
+    document.getElementById("ans1").disabled=true;
+    document.getElementById("ans2").disabled=false;
+    document.getElementById("ans2").required=true;
+
+}
+else{
+    document.getElementById("ans1").disabled=false;
+    document.getElementById("ans2").disabled=true;
+    document.getElementById("ans1").required=true;
+}
+
+function store(){
+    var store = document.getElementById("ans1").value;
+    sessionStorage.setItem("store", store);
+}
+
+</script>
+</body>
+
+</html>

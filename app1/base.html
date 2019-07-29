@@ -1,0 +1,48 @@
+
+<html>
+	<head>
+		<link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+    <script type="text/javascript" src="js/jquery.plugin.js"></script> 
+    <script type="text/javascript" src="js/jquery.countdown.js"></script>-->
+		{% block head %}
+		<title></title>
+		{% endblock %}
+	</head>
+	<body>
+  	<div class="container">
+
+      		<!-- Static navbar -->
+      		<nav class="navbar navbar-default">
+      		  <div class="container-fluid" >
+              <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+<!--<script type="text/javascript" src="js/jquery.plugin.js"></script> 
+<script type="text/javascript" src="js/jquery.countdown.js"></script>-->
+      		      <div class="navbar-header">
+      		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      		        <span class="sr-only">Toggle navigation</span>
+      		        <span class="icon-bar"></span>
+      		        <span class="icon-bar"></span>
+      		        <span class="icon-bar"></span>
+      		      </button>
+      		      <a class="navbar-brand" href="/accounts/login/"><font face="aria-expanded" color="K68vbdEjh4u">CREDENZ</font></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/accounts/register/">Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/accounts/logout">Logout</a></li> 
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+	{% block body %}
+	<h1>Base</h1>
+	{% endblock %}
+</body>
+</html>
+		

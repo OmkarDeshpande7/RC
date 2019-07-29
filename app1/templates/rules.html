@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+{% load staticfiles %}
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="{% static "js/rc.js" %}"></script>
+<script src="{% static "js/rc1.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script type="text/javascript" src=" {% static "js/rc3.js" %}"></script>
+
+  <link rel="stylesheet" href=/static/"css/animate.min.css" >
+<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <script>
+
+    function mymove() {
+      var elem = document.getElementById("trikon");
+      var op = 1;
+
+      var id = setInterval(frame, 0.1);
+      function frame() {
+        if (op == 0) {
+          clearInterval(id);
+        } else {
+
+          elem.style.opacity = op;
+          op = op - 0.008;
+
+        }
+
+      }
+    }
+    function myfun() {
+      var ele = document.getElementById("Instructions");
+      var e = document.getElementById("button");
+      var e1 = 0;
+      var opac = 0;
+
+      var id = setInterval(frame1, 1);
+      function frame1() {
+        if (opac == 1 && e1 == 1) {
+          clearInterval(id);
+        } else {
+
+          ele.style.opacity = opac;
+          opac = opac + 0.001;
+          e.style.opacity = e1;
+          e1 = e1 + 0.001;
+
+        }
+
+      }
+
+    }
+
+
+
+
+
+      /* function mymove(){
+         
+           document.getElementById("trikon").style.visibility="hidden";
+           
+           document.getElementById("Instructions").style.visibility="visible";
+           document.getElementById("button").style.visibility="visible";
+          
+       }*/
+  </script>
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+
+
+      overflow: hidden;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 500px;
+      height: 500px;
+      
+
+    }
+
+    .triangle {
+
+
+      transform: scale(0.4, 0.4);
+      height: 500px;
+    }
+
+    .left {
+      width: 140px;
+      height: 500px;
+      transform: rotate(30deg);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    .left div {
+      transform: rotate(30deg) skew(30deg);
+      background: #006495;
+      width: 100%;
+      height: 500px;
+    }
+
+    .left div:after {
+      content: "";
+      background: #006495;
+      width: 330px;
+      height: 100px;
+      position: absolute;
+      right: -325px;
+    }
+
+    .right {
+      width: 140px;
+      height: 500px;
+      transform: rotate(-30deg);
+      position: absolute;
+      left: 323px;
+      top: -60px;
+      z-index: 99;
+    }
+
+    .right div {
+      transform: rotate(30deg) skew(30deg);
+      background: #0093D1;
+      width: 100%;
+      height: 500px;
+      position: absolute;
+      right: 0;
+    }
+
+    .right div:after {
+      content: "";
+      background: #0093D1;
+      width: 322px;
+      height: 100px;
+      position: absolute;
+      right: 82px;
+      bottom: 0;
+      transform: skew(-49deg);
+    }
+
+    .bottom {
+      width: 140px;
+      height: 500px;
+      transform: rotate(90deg);
+      position: absolute;
+      left: 214px;
+      top: 250px;
+    }
+
+    .bottom div {
+      transform: rotate(30deg) skew(30deg);
+      background: #004C70;
+      width: 100%;
+      height: 500px;
+      position: absolute;
+      right: 0;
+    }
+
+    .bottom div:after {
+      content: "";
+      background: #004C70;
+      width: 462px;
+      height: 100px;
+      position: absolute;
+      right: 0;
+      top: 400px;
+    }
+
+    .triangle {
+      margin: 0 auto;
+      transform: scale(0.4, 0.4);
+      height: 500px;
+    }
+
+    .left {
+      width: 140px;
+      height: 500px;
+      transform: rotate(30deg);
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    .left div {
+      transform: rotate(30deg) skew(30deg);
+      background: #006495;
+      width: 100%;
+      height: 500px;
+    }
+
+    .left div:after {
+      content: "";
+      background: #006495;
+      width: 330px;
+      height: 100px;
+      position: absolute;
+      right: -325px;
+    }
+
+    .right {
+      width: 140px;
+      height: 500px;
+      transform: rotate(-30deg);
+      position: absolute;
+      left: 323px;
+      top: -60px;
+      z-index: 99;
+    }
+
+    .right div {
+      transform: rotate(30deg) skew(30deg);
+      background: #0093D1;
+      width: 100%;
+      height: 500px;
+      position: absolute;
+      right: 0;
+    }
+
+    .right div:after {
+      content: "";
+      background: #0093D1;
+      width: 322px;
+      height: 100px;
+      position: absolute;
+      right: 82px;
+      bottom: 0;
+      transform: skew(-49deg);
+    }
+
+    .bottom {
+      width: 140px;
+      height: 500px;
+      transform: rotate(90deg);
+      position: absolute;
+      left: 214px;
+      top: 250px;
+    }
+
+    .bottom div {
+      transform: rotate(30deg) skew(30deg);
+      background: #004C70;
+      width: 100%;
+      height: 500px;
+      position: absolute;
+      right: 0;
+    }
+
+    .bottom div:after {
+      content: "";
+      background: #004C70;
+      width: 462px;
+      height: 100px;
+      position: absolute;
+      right: 0;
+      top: 400px;
+    }
+    .button:active{
+      transform: translateY(4px);
+    }
+  </style>
+</head>
+
+
+<body style="background-image:url(/static/images/rc29.jpg);background-size:cover;background-repeat: no-repeat;" onload="mymove();setTimeout(myfun,400);">
+<form action="/app1/timer/" method="post">
+      {%csrf_token%}
+<script src="/static/jquery.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"  crossorigin="anonymous"></script>
+<script src="/static/js/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"  crossorigin="anonymous"></script>
+<script src="/static/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <div class="container-fluid" style="height:100vh;">
+    <div class="row">
+       <!-- <nav class="navbar navbar-expand-lg nav-expand-sm n navbar-dark fixed-top" style="height: 7vh">
+            <img src="clash.png" style="height: 7vh;width:9vh;">
+            <ul class="nav navbar-nav" style="width:100%;display: flex;justify-content:end;align-items: center">
+    
+                <li class="mr-5">
+                    <button class="btn logout" type="button" data-toggle="modal" data-target="#logout">Logout</button>
+                </li>
+                <li>
+                    <img src="pisb1.png" style="height: 5vh;width: 9vh;">
+                </li>
+        </nav>-->
+
+      <nav class="navbar navbar-expand-lg nav-expand-sm  navbar-dark  fixed-top a" style="height:7vh;background-color:rgba(0,0,0,0.60);">
+        <img src="/static/images/rc.png" style="height: 7vh;width:9vh;">
+        <ul class="nav navbar-nav d-flex justify-content-end" style="width:100%;">
+          <li class="nav-item ml-4 mt-2">
+                    <img src="{% static "images/pisb1.png" %}" style="height: 5vh;width: 15vh;">
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container-fluid" style="height:86vh">
+
+
+      <div class="row">
+
+
+        <div class="text" id="Instructions" disabled style="height:60vh;width:100vh;font-size:20px;background-color:rgba(0, 0, 0, 0.678);opacity:0;position: absolute;left:-17vh;right:10vh;resize: none;border:2px solid black;border-style:double;margin-top:-4vh;">
+          <div class="row">
+            <div style=" background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+            background-color: rgba(171, 234, 236, 0.664);height: 4vh;border-bottom-left-radius: 30px;border-bottom-right-radius: 30px;border:none;width: 100vh;margin-left: 1.7vh;margin-top: -0.19vh;"></div>
+          </div>
+          <p style="color:lavenderblush;font-size: 25px;text-align:center;">INSTRUCTIONS</p>
+          <p style="color: lavender; margin-left:0;">1.The competition is of 28 minutes.</p>
+          <p style="color: lavender">2.The question put in front of you has only ONE INTEGER answer.</p>
+          <p style="color: lavender">3.You will only proceed if you attempt the question.</p>
+          <p style="color: lavender">4.You will have 2 attempts to answer the question.</p>
+          <p style="color: lavender">5.The attempts will carry marks given in the marking scheme ie, the first attempt will have a marking scheme of +4,0.And the second attempt has a marking scheme of +2,-1.</p>
+          <p style="color: lavender">6.You can log out of the competition any time you want through the LOGOUT button.</p>
+            <div style=" background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+            background-color: rgba(171, 234, 236, 0.664);
+            background-blend-mode: multiply,multiply;height: 4vh;border-top-left-radius: 30px;border-top-right-radius: 30px;border:none;width: 100vh;margin-left:-0.25vh;margin-top: 3.25vh;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="triangle " id="trikon" style=" margin-left:15vh;">
+          <div class="left">
+            <div></div>
+          </div>
+          <div class="right">
+            <div></div>
+          </div>
+          <div class="bottom">
+            <div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center align-self-center" style="margin-left: 2w;">
+        <button type="submit" class="btn button" id="button" style=" background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+        background-color: rgba(171, 234, 236, 0.664);
+        background-blend-mode: multiply,multiply;height: 8vh;width:150px;position: relative;margin-top:0.5vh ;opacity:0;color: black;font-size:3vh; ">PLAY</button>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- <footer style="height: 7vh;text-align: center;background-color: black;font-size:12px;">©PICT IEEE STUDENT BRANCH</footer>-->
+    <nav class="navbar navbar-expand-lg  navbar-dark  fixed-bottom a" style="height:7vh;display:flex;justify-content:center;align-items:center;width:auto; background-color:rgba(0,0,0,0.60);color: white;">
+
+      ©IEEE COMPUTER SOCIETY
+
+    </nav>
+
+  </div>
+   </form>
+</body>
+
+</html>
